@@ -29,14 +29,14 @@ namespace MyArray
                 var newItems = new int[incrementSize];
 
                 Buffer.BlockCopy(m_Items, 0, newItems, 0, (index - 1) * SizeOfInt);
-                Buffer.BlockCopy(m_Items, index * SizeOfInt, newItems, (index + 1) * SizeOfInt, Length - index);
+                Buffer.BlockCopy(m_Items, index * SizeOfInt, newItems, (index + 1) * SizeOfInt, (Length - index) * SizeOfInt);
                 newItems[index] = item;
 
                 m_Items = newItems;
             }
             else
             {
-                Buffer.BlockCopy(m_Items, index * SizeOfInt, m_Items, (index + 1) * SizeOfInt, Length - index);
+                Buffer.BlockCopy(m_Items, index * SizeOfInt, m_Items, (index + 1) * SizeOfInt, (Length - index) * SizeOfInt);
                 m_Items[index] = item;
             }
 
