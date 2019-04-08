@@ -12,11 +12,6 @@ namespace MyArray
         private int[] m_Items;
 
         /// <summary>
-        /// 自訂義陣列存放的元素長度
-        /// </summary>
-        public int Length { get; private set; } = 0;
-
-        /// <summary>
         /// 取得或設定指定索引的元素
         /// </summary>
         /// <param name="index">索引</param>
@@ -39,6 +34,10 @@ namespace MyArray
             }
         }
 
+        /// <summary>
+        /// 自訂義陣列存放的元素長度
+        /// </summary>
+        public int Length { get; private set; } = 0;
         /// <summary>
         /// 建構子
         /// </summary>
@@ -81,6 +80,10 @@ namespace MyArray
             Length += 1;
         }
 
+        /// <summary>
+        /// 移除陣列元素
+        /// </summary>
+        /// <param name="index">索引</param>
         public void Remove(int index)
         {
             if (index < 0 || index >= Length)
