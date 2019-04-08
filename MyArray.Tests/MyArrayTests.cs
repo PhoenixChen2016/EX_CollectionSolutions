@@ -102,5 +102,126 @@ namespace MyArray.Tests
             // assert
             action.Should().Throw<IndexOutOfRangeException>();
         }
+
+        [TestMethod]
+        public void 測試MyArray_索引子可以取得指定的元素()
+        {
+            // arrange
+            var sut = new MyArray();
+            sut.Insert(0, 1);
+            sut.Insert(1, 3);
+            sut.Insert(2, 5);
+            sut.Insert(3, 7);
+            sut.Insert(4, 9);
+
+            var expected = 3;
+
+            // act
+            var actual = sut[1];
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void 測試MyArray_索引子指定負數會錯誤()
+        {
+            // arrange
+            var sut = new MyArray();
+            sut.Insert(0, 1);
+            sut.Insert(1, 3);
+            sut.Insert(2, 5);
+            sut.Insert(3, 7);
+            sut.Insert(4, 9);
+
+            // act
+            Action action = () =>
+            {
+                var test = sut[-1];
+            };
+
+            // assert
+            action.Should().Throw<IndexOutOfRangeException>();
+        }
+
+        [TestMethod]
+        public void 測試MyArray_索引子指定超過會錯誤()
+        {
+            // arrange
+            var sut = new MyArray();
+            sut.Insert(0, 1);
+            sut.Insert(1, 3);
+            sut.Insert(2, 5);
+            sut.Insert(3, 7);
+            sut.Insert(4, 9);
+
+            // act
+            Action action = () =>
+            {
+                var test = sut[100];
+            };
+
+            // assert
+            action.Should().Throw<IndexOutOfRangeException>();
+        }
+
+        [TestMethod]
+        public void 測試MyArray_更新陣列的值會正常()
+        {
+            // arrange
+            var sut = new MyArray();
+            sut.Insert(0, 1);
+            sut.Insert(1, 3);
+            sut.Insert(2, 5);
+            sut.Insert(3, 7);
+            sut.Insert(4, 9);
+
+            var expected = new[] { 1, 3, 5, 100, 9 };
+
+            // act
+            sut[3] = 100;
+
+            var actual = sut.ToArray();
+
+            // assert
+            Assert.AreEqual(expected[3], actual[3]);
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void 測試MyArray_更新陣列索引為負數會錯誤()
+        {
+            // arrange
+            var sut = new MyArray();
+            sut.Insert(0, 1);
+            sut.Insert(1, 3);
+            sut.Insert(2, 5);
+            sut.Insert(3, 7);
+            sut.Insert(4, 9);
+
+            // act
+            Action action = () => sut[-1] = 1;
+
+            // assert
+            action.Should().Throw<IndexOutOfRangeException>();
+        }
+
+        [TestMethod]
+        public void 測試MyArray_更新陣列索引超過Length會錯誤()
+        {
+            // arrange
+            var sut = new MyArray();
+            sut.Insert(0, 1);
+            sut.Insert(1, 3);
+            sut.Insert(2, 5);
+            sut.Insert(3, 7);
+            sut.Insert(4, 9);
+
+            // act
+            Action action = () => sut[100] = 1;
+
+            // assert
+            action.Should().Throw<IndexOutOfRangeException>();
+        }
     }
 }
