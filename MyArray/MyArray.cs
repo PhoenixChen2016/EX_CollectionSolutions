@@ -24,7 +24,7 @@ namespace MyArray
         {
             get
             {
-                if (index < 0 || index > Length)
+                if (index < 0 || index >= Length)
                     throw new IndexOutOfRangeException();
 
                 return m_Items[index];
@@ -32,7 +32,7 @@ namespace MyArray
 
             set
             {
-                if (index < 0 || index > Length)
+                if (index < 0 || index >= Length)
                     throw new IndexOutOfRangeException();
 
                 m_Items[index] = value;
@@ -79,6 +79,15 @@ namespace MyArray
             }
 
             Length += 1;
+        }
+
+        public void Remove(int index)
+        {
+            if (index < 0 || index >= Length)
+                throw new IndexOutOfRangeException();
+
+            Buffer.BlockCopy(m_Items, (index + 1) * SizeOfInt, m_Items, index * SizeOfInt, (Length - index) * SizeOfInt);
+            Length -= 1;
         }
 
         /// <summary>

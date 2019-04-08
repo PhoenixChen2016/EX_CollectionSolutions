@@ -158,7 +158,7 @@ namespace MyArray.Tests
             // act
             Action action = () =>
             {
-                var test = sut[100];
+                var test = sut[5];
             };
 
             // assert
@@ -176,10 +176,10 @@ namespace MyArray.Tests
             sut.Insert(3, 7);
             sut.Insert(4, 9);
 
-            var expected = new[] { 1, 3, 5, 100, 9 };
+            var expected = new[] { 1, 3, 5, 7, 100 };
 
             // act
-            sut[3] = 100;
+            sut[4] = 100;
 
             var actual = sut.ToArray();
 
@@ -218,7 +218,65 @@ namespace MyArray.Tests
             sut.Insert(4, 9);
 
             // act
-            Action action = () => sut[100] = 1;
+            Action action = () => sut[5] = 1;
+
+            // assert
+            action.Should().Throw<IndexOutOfRangeException>();
+        }
+
+        [TestMethod]
+        public void 測試MyArray_Remove指定元素會成功()
+        {
+            // arrange
+            var sut = new MyArray();
+            sut.Insert(0, 1);
+            sut.Insert(1, 3);
+            sut.Insert(2, 5);
+            sut.Insert(3, 7);
+            sut.Insert(4, 9);
+
+            var expected = new[] { 1, 3, 7, 9 };
+
+            // act
+            sut.Remove(2);
+
+            var actual = sut.ToArray();
+
+            // assert
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void 測試MyArray_Remove索引如果為負數會錯誤()
+        {
+            // arrange
+            var sut = new MyArray();
+            sut.Insert(0, 1);
+            sut.Insert(1, 3);
+            sut.Insert(2, 5);
+            sut.Insert(3, 7);
+            sut.Insert(4, 9);
+
+            // act
+            Action action = () => sut.Remove(-1);
+
+            // assert
+            action.Should().Throw<IndexOutOfRangeException>();
+        }
+
+        [TestMethod]
+        public void 測試MyArray_Remove索引如果大於陣列大小會錯誤()
+        {
+            // arrange
+            var sut = new MyArray();
+            sut.Insert(0, 1);
+            sut.Insert(1, 3);
+            sut.Insert(2, 5);
+            sut.Insert(3, 7);
+            sut.Insert(4, 9);
+
+            // act
+            Action action = () => sut.Remove(5);
 
             // assert
             action.Should().Throw<IndexOutOfRangeException>();
