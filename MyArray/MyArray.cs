@@ -19,7 +19,7 @@ namespace CollectionSolutions
         {
             get
             {
-                if (index < 0 || index >= Length)
+                if (!CheckIndexInArray(index))
                     throw new IndexOutOfRangeException();
 
                 return m_Items[index];
@@ -27,7 +27,7 @@ namespace CollectionSolutions
 
             set
             {
-                if (index < 0 || index >= Length)
+                if (!CheckIndexInArray(index))
                     throw new IndexOutOfRangeException();
 
                 m_Items[index] = value;
@@ -55,7 +55,7 @@ namespace CollectionSolutions
         /// <param name="item">數字</param>
         public void Insert(int index, int item)
         {
-            if (index < 0 || index > Length)
+            if (!(CheckIndexInArray(index) || index == Length))
                 throw new IndexOutOfRangeException();
 
             if (Length == m_Items.Length)
@@ -67,16 +67,12 @@ namespace CollectionSolutions
                 var newItems = new int[incrementSize];
 
                 Buffer.BlockCopy(m_Items, 0, newItems, 0, (index - 1) * SizeOfInt);
-                Buffer.BlockCopy(m_Items, index * SizeOfInt, newItems, (index + 1) * SizeOfInt, (Length - index) * SizeOfInt);
-                newItems[index] = item;
 
                 m_Items = newItems;
             }
-            else
-            {
-                Buffer.BlockCopy(m_Items, index * SizeOfInt, m_Items, (index + 1) * SizeOfInt, (Length - index) * SizeOfInt);
-                m_Items[index] = item;
-            }
+
+            Buffer.BlockCopy(m_Items, index * SizeOfInt, m_Items, (index + 1) * SizeOfInt, (Length - index) * SizeOfInt);
+            m_Items[index] = item;
 
             Length += 1;
         }
@@ -87,7 +83,7 @@ namespace CollectionSolutions
         /// <param name="index">索引</param>
         public void Remove(int index)
         {
-            if (index < 0 || index >= Length)
+            if (!CheckIndexInArray(index))
                 throw new IndexOutOfRangeException();
 
             Buffer.BlockCopy(m_Items, (index + 1) * SizeOfInt, m_Items, index * SizeOfInt, (Length - index) * SizeOfInt);
@@ -101,6 +97,11 @@ namespace CollectionSolutions
         public int[] ToArray()
         {
             return m_Items.Take(Length).ToArray();
+        }
+
+        private bool CheckIndexInArray(int index)
+        {
+            return index >= 0 && index < Length;
         }
     }
 }
