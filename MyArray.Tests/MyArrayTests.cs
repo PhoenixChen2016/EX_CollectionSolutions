@@ -1,8 +1,9 @@
 using System;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using CollectionSolutions;
 
-namespace MyArray.Tests
+namespace CollectionSolutions.Tests
 {
     [TestClass]
     public class MyArrayTests

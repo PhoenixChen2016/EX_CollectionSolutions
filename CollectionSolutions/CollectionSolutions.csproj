@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyArray\MyArray.csproj" />
+    <ProjectReference Include="..\MyStack\MyStack.csproj" />
   </ItemGroup>
 
 </Project>

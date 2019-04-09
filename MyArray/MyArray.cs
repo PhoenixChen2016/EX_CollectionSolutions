@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace MyArray
+namespace CollectionSolutions
 {
     /// <summary>
     /// 自訂義陣列
@@ -38,6 +38,7 @@ namespace MyArray
         /// 自訂義陣列存放的元素長度
         /// </summary>
         public int Length { get; private set; } = 0;
+
         /// <summary>
         /// 建構子
         /// </summary>
