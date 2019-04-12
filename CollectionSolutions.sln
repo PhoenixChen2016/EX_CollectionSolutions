@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyArray", "MyArray\MyArray.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyArray.Tests", "MyArray.Tests\MyArray.Tests.csproj", "{0F716376-3EF3-40D2-A81C-FFB89DFA7A4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStack", "MyStack\MyStack.csproj", "{17F6056C-22B0-40E9-960A-CDEE08F7C65D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyStack", "MyStack\MyStack.csproj", "{17F6056C-22B0-40E9-960A-CDEE08F7C65D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStack.Tests", "MyStack.Tests\MyStack.Tests.csproj", "{2F901290-90D1-4DF9-AF34-32536F8EA18C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyStack.Tests", "MyStack.Tests\MyStack.Tests.csproj", "{2F901290-90D1-4DF9-AF34-32536F8EA18C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyList", "MyList\MyList.csproj", "{75C42888-E307-4449-B67A-277FDDCF3797}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{2F901290-90D1-4DF9-AF34-32536F8EA18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F901290-90D1-4DF9-AF34-32536F8EA18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F901290-90D1-4DF9-AF34-32536F8EA18C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C42888-E307-4449-B67A-277FDDCF3797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C42888-E307-4449-B67A-277FDDCF3797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C42888-E307-4449-B67A-277FDDCF3797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C42888-E307-4449-B67A-277FDDCF3797}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
