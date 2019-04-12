@@ -94,5 +94,25 @@ namespace CollectionSolutions
 		{
 			return InsertAfter(node.Previous, value);
 		}
+
+		/// <summary>
+		/// 找到第一個和數值相等的節點，如果找不到會回傳Null
+		/// </summary>
+		/// <param name="value">數值</param>
+		/// <returns></returns>
+		public MyListNode Find(int value)
+		{
+			var currentNode = m_Root.Next;
+
+			while (currentNode != m_Root)
+			{
+				if (currentNode.Value == value)
+					return currentNode;
+
+				currentNode = currentNode.Next;
+			}
+
+			return null;
+		}
 	}
 }
