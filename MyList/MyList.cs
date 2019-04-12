@@ -40,6 +40,11 @@ namespace CollectionSolutions
 		}
 
 		/// <summary>
+		/// 取得串列中的節點個數
+		/// </summary>
+		public int Count { get; private set; }
+
+		/// <summary>
 		/// 建構子
 		/// </summary>
 		public MyList()
@@ -81,6 +86,8 @@ namespace CollectionSolutions
 			pervNode.Next = insertNode;
 			nextNode.Previous = insertNode;
 
+			Count++;
+
 			return insertNode;
 		}
 
@@ -113,6 +120,35 @@ namespace CollectionSolutions
 			}
 
 			return null;
+		}
+
+		/// <summary>
+		/// 刪除找到的第一個值
+		/// </summary>
+		/// <param name="value"></param>
+		public void Delete(int value)
+		{
+			var deleteNode = Find(value);
+
+			Delete(deleteNode);
+		}
+
+		/// <summary>
+		/// 刪除指定的節點
+		/// </summary>
+		/// <param name="node"></param>
+		public void Delete(MyListNode node)
+		{
+			if (node == null)
+				return;
+
+			var prevNode = node.Previous;
+			var nextNode = node.Next;
+
+			prevNode.Next = nextNode;
+			nextNode.Previous = prevNode;
+
+			Count--;
 		}
 	}
 }

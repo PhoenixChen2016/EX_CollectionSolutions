@@ -54,5 +54,107 @@ namespace CollectionSolutions.Tests
 			// assert
 			Assert.AreEqual(expected, actual);
 		}
+
+		[TestMethod]
+		public void 代刚MyList_Find计т才竊翴()
+		{
+			// arrange
+			var sut = new MyList();
+
+			sut.Append(1);
+			sut.Append(2);
+			sut.Append(3);
+
+			var findValue = 2;
+			var expected = 2;
+
+			// act
+			var node = sut.Find(findValue);
+
+			var actual = node.Value;
+
+			// assert
+			Assert.AreEqual(expected, actual);
+		}
+
+		[TestMethod]
+		public void 代刚MyList_Findтぃ计穦肚Null()
+		{
+			// arrange
+			var sut = new MyList();
+
+			sut.Append(1);
+			sut.Append(2);
+			sut.Append(3);
+
+			var findValue = 4;
+
+			// act
+			var actual = sut.Find(findValue);
+
+			// assert
+			Assert.IsNull(actual);
+		}
+
+		[TestMethod]
+		public void 代刚MyList_Delete﹃い碞тぃ()
+		{
+			// arrange
+			var sut = new MyList();
+
+			sut.Append(1);
+			sut.Append(2);
+			sut.Append(3);
+
+			var deleteValue = 1;
+
+			// act
+			sut.Delete(deleteValue);
+
+			var actual = sut.Find(deleteValue);
+
+			// assert
+			Assert.IsNull(actual);
+		}
+
+		[TestMethod]
+		public void 代刚MyList_竊翴タ絋眔﹃计()
+		{
+			// arrange
+			var sut = new MyList();
+
+			sut.Append(1);
+			sut.Append(2);
+			sut.Append(3);
+
+			var expected = 3;
+
+			// act
+			var actual = sut.Count;
+
+			// assert
+			Assert.AreEqual(expected, actual);
+		}
+
+		[TestMethod]
+		public void 代刚MyList_埃竊翴タ絋眔﹃计()
+		{
+			// arrange
+			var sut = new MyList();
+
+			sut.Append(1);
+			sut.Append(2);
+			sut.Append(3);
+
+			sut.Delete(2);
+
+			var expected = 2;
+
+			// act
+			var actual = sut.Count;
+
+			// assert
+			Assert.AreEqual(expected, actual);
+		}
 	}
 }
